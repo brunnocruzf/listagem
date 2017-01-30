@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="public/css/app.css">
-        <title>Controle de estoque</title>
+        <title>Controle do estoque</title>
     </head>
     <body>
         <h1>Listagem de Produtos</h1>
