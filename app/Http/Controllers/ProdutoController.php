@@ -6,14 +6,35 @@ use Request;
 
 class ProdutoController extends Controller
 {
-    public function lista(){
-        $html= '<h1>Listagem de Produtos</h1>';
+    public function lista()
+    {
+        $html = '<h1>Listagem de Produtos</h1>';
         $produtos = DB::select('select * from produtos');
         return view("listagem")->with('produtos', $produtos);
     }
-    public function mostra(){
+
+    public function mostra()
+    {
         $id = Request::route("id");
         $produto = DB::select('select * from produtos where id = ?', [$id]);
         return view("detalhes")->with('p', $produto[0]);
+    }
+
+    public function novo()
+    {
+        return view('formulario');
+    }
+
+    public function adiciona()
+    {
+        $nome = Request::input('nome');
+        $valor = Request::input('valor');
+        $quantidade = Request::input('quantidade');
+        $descricao = Request::input('descricao');
+        $adicionado = DB::insert('insert into produtos (nome, quantidade, valor, descricao)VALUES (?,?,?,?)',
+            array($nome, $valor, $quantidade, $descricao));
+        if ($adicionado == true) {
+            return view("adicionado");
+        }
     }
 }
