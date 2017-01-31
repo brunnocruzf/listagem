@@ -20,5 +20,4 @@
 		@endforeach
 	</table>
 	@endif
-	
   @stop
