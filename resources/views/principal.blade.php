@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/oficina/public/css/app.css">
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" >
     <title>Contole de estoque</title>
-	<link rel="stylesheet" type="text/css" href="/oficina/public/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/custom.css') }}">
 </head>
 <body>
 	<div class="container">

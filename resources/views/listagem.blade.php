@@ -4,6 +4,9 @@
 	@if(empty($produtos))
 		<div class="alert alert-danger">Nenhum produto cadastrado</div>
 	@else
+	@if(old('nome'))
+		<div class="alert alert-success"></div>
+	@else
 	<table class="table table-striped table-bordered table-hover">
 		@foreach ($produtos as $p)
         <tr class="{{$p->quantidade <= 1 ? 'danger':''}}">
@@ -21,8 +24,14 @@
                     <bottom class="btn btn-primary">Excluir</bottom>
                 </a>
             </td>
+			<td>
+                <a href="produtos/alterar/{{$p->id}}">
+                    <bottom class="btn btn-primary">Aleterar</bottom>
+                </a>
+            </td>
         </tr>
 		@endforeach
 	</table>
+	@endif
 	@endif
   @stop

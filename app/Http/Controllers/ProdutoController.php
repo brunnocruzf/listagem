@@ -6,50 +6,49 @@ use Illuminate\Support\Facades\DB;
 use Request;
 use Session;
 
-class ProdutoController extends Controller
-{
-    public function lista()
-    {
+class ProdutoController extends Controller{
+    public function lista(){
         $html = '<h1>Listagem de Produtos</h1>';
         $produtos = Produtos::all();
         return view("listagem")->with('produtos', $produtos);
     }
-
-    public function mostra()
-    {
+    public function mostra(){
         $id = Request::route("id");
         $produto = Produtos::find($id);
         return view("detalhes")->with('p', $produto);
     }
-
-    public function novo()
-    {
+    public function novo(){
         return view('formulario');
     }
-
-    public function adiciona()
-    {
-        $nome = Request::input('nome');
-        $valor = Request::input('valor');
-        $quantidade = Request::input('quantidade');
-        $descricao = Request::input('descricao');
-        $adicionado = DB::insert('insert into produtos (nome, quantidade, valor, descricao)VALUES (?,?,?,?)',
-            array($nome, $valor, $quantidade, $descricao));
-        if ($adicionado == true) {
-            return view("adicionado");
-        }
-    }
+	public function adicionar(){
+		Produtos::create(Request::all());
+		return redirect('oficina/produtos/novo')->withInput();
+	}
     public function deletar(){
         $id = Request::route("id");
         $produto = Produtos::find($id);
         $produto->delete();
-        return redirect('/produtos');
+        return redirect('oficina/produtos');
     }
-	public function novoProduto(){
-		return view('formulario');
+	public function alterar(){
+		$id = Request::route("id");
+		$produto = Produtos::find($id);
+		return view("alterar")->with('p', $produto);
 	}
-	public function adicionarProduto(){
-		Produtos::create(Request::all());
-		return redirect('/produtos/novo')->withInput();
+	public function alterado(){
+		$id = Request::route("id");
+		$nome = Request::input("nome");
+		$valor = Request::input("valor");
+		$descricao = Request::input("descricao");
+		$quantidade = Request::input("quantidade");
+		
+		$altera = Produtos::find($id);
+		$altera->id = $id;
+		$altera->nome = $nome;
+		$altera->valor = $valor;
+		$altera->descricao = $descricao;
+		$altera->quantidade = $quantidade;
+		$altera->save();
+		return redirect("oficina/produtos")->withInput("nome");
 	}
 }
