@@ -1,26 +1,41 @@
 @extends('principal')
 @section('conteudo')
-    <link rel="stylesheet" type="text/css" href="../public/css/app.css">
-    <div class="container-fluid">
-    <form action="/oficina/produtos/adiciona">
-        <div class="form-group">
-            <label>Nome</label>
-            <input name="nome" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Descricao</label>
-            <input name="descricao" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Valor</label>
-            <input name="valor" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Quantidade</label>
-            <input type="number" name="quantidade" class="form-control">
-        </div>
-        <button type="submit" class="btn
-btn-primary btn-block">Submit</button>
-    </form>
-    </div>
+	<div class="conteiner-fluid"style="
+    padding-left: 170px;
+    padding-right: 170px;
+	">
+	@if(old('nome'))
+		<div class="alert alert-success">
+			Produto {{old('nome')}} adicionado com sucesso!
+		</div>
+	@endif
+	<form action="adicionar" method="post">
+			<div class="form-group row">
+				<label for="nome" class="col-xs-3 col-form-label">Nome</label>
+				<div class="col-xs-9">
+					<input type="text" class="form-control" id="nome" name="nome">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="valor" class="col-xs-3 col-form-label">Valor</label>
+				<div class="col-xs-9">
+					<input type="text" class="form-control" id="valor" name="valor">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="descricao" class="col-xs-3 col-form-label">Descricao</label>
+				<div class="col-xs-9">
+					<input type="text" class="form-control" id="descricao" name="descricao">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="quantidade" class="col-xs-3 col-form-label">Quantidade</label>
+				<div class="col-xs-9">
+					<input type="text" class="form-control" id="quantidade" name="quantidade">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary" style="float:right">Cadastrar</button>
+	</form>
+	</div>
 @stop
+

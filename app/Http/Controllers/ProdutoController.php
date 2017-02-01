@@ -1,23 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Produtos;
 use Illuminate\Support\Facades\DB;
 use Request;
+use Session;
 
 class ProdutoController extends Controller
 {
     public function lista()
     {
         $html = '<h1>Listagem de Produtos</h1>';
-        $produtos = DB::select('select * from produtos');
+        $produtos = Produtos::all();
         return view("listagem")->with('produtos', $produtos);
     }
 
     public function mostra()
     {
         $id = Request::route("id");
-        $produto = DB::select('select * from produtos where id = ?', [$id]);
-        return view("detalhes")->with('p', $produto[0]);
+        $produto = Produtos::find($id);
+        return view("detalhes")->with('p', $produto);
     }
 
     public function novo()
@@ -37,4 +39,17 @@ class ProdutoController extends Controller
             return view("adicionado");
         }
     }
+    public function deletar(){
+        $id = Request::route("id");
+        $produto = Produtos::find($id);
+        $produto->delete();
+        return redirect('/produtos');
+    }
+	public function novoProduto(){
+		return view('formulario');
+	}
+	public function adicionarProduto(){
+		Produtos::create(Request::all());
+		return redirect('/produtos/novo')->withInput();
+	}
 }
