@@ -4,13 +4,17 @@
     padding-left: 170px;
     padding-right: 170px;
 	">
-	@if(old('nome'))
-		<div class="alert alert-success">
-			Produto {{old('nome')}} alterado com sucesso!
-		</div>
+	@if(empty($errors->all())==false)
+		@foreach($errors->all() as $e)
+			<div class="alert alert-danger">{{ $e }}</div>
+		@endforeach
+	@elseif(old('nome'))
+			<div class="alert alert-success">
+				Produto {{old('nome')}} alterado com sucesso!
+			</div>
 	@endif
 	<form action="alterado" method="post">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="hidden" name="id" value="{{$p->id}}">
 			<div class="form-group row">
 				<label for="nome" class="col-xs-3 col-form-label">Nome</label>
 				<div class="col-xs-9">

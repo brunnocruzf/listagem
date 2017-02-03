@@ -5,8 +5,8 @@
 		<div class="alert alert-danger">Nenhum produto cadastrado</div>
 	@else
 	@if(old('nome'))
-		<div class="alert alert-success"></div>
-	@else
+		<div class="alert alert-success">Produto {{old('nome')}} alterado com sucesso.</div>
+	@endif
 	<table class="table table-striped table-bordered table-hover">
 		@foreach ($produtos as $p)
         <tr class="{{$p->quantidade <= 1 ? 'danger':''}}">
@@ -14,6 +14,7 @@
             <td>{{$p->valor}}</td>
             <td>{{$p->descricao}}</td>
             <td>{{$p->quantidade}}</td>
+			<td>{{$p->listagem}}</td>
             <td>
                 <a href="produtos/mostra/{{$p->id}}">
                     <bottom class="btn btn-primary">visualizar</bottom>
@@ -32,6 +33,5 @@
         </tr>
 		@endforeach
 	</table>
-	@endif
 	@endif
   @stop

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Produtos;
 use Illuminate\Support\Facades\DB;
 use Request;
+use App\Http\Requests\ProdutoRequest;
 use Session;
 
 class ProdutoController extends Controller{
@@ -20,8 +21,8 @@ class ProdutoController extends Controller{
     public function novo(){
         return view('formulario');
     }
-	public function adicionar(){
-		Produtos::create(Request::all());
+	public function adicionar(ProdutoRequest $request){
+		Produtos::create($request->all());
 		return redirect('oficina/produtos/novo')->withInput();
 	}
     public function deletar(){
@@ -35,20 +36,10 @@ class ProdutoController extends Controller{
 		$produto = Produtos::find($id);
 		return view("alterar")->with('p', $produto);
 	}
-	public function alterado(){
-		$id = Request::route("id");
-		$nome = Request::input("nome");
-		$valor = Request::input("valor");
-		$descricao = Request::input("descricao");
-		$quantidade = Request::input("quantidade");
-		
-		$altera = Produtos::find($id);
-		$altera->id = $id;
-		$altera->nome = $nome;
-		$altera->valor = $valor;
-		$altera->descricao = $descricao;
-		$altera->quantidade = $quantidade;
-		$altera->save();
-		return redirect("oficina/produtos")->withInput("nome");
+	public function alterado(ProdutoRequest $request){
+		$id = Request::input("id");
+		$campos = $request->all();
+		Produtos::where("id", $id)->update($campos);
+		return redirect("oficina/produtos")->withInput();
 	}
 }

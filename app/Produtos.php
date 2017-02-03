@@ -11,5 +11,5 @@ class Produtos extends Model
     //desativa as colulas de timestamps
     public $timestamps = false;
     //especifica os campos que podem ser preenchidos (MassAssignmentException)
-    protected $fillable = array('nome', 'descricao','quantidade','valor');
+    protected $fillable = array('nome', 'descricao','quantidade','valor','tamanho');
 }
