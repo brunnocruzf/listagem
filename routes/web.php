@@ -9,7 +9,8 @@ Route::get('oficina/produtos/deletar/{id}', 'ProdutoController@deletar');
 Route::get('oficina/produtos/alterar/{id}', 'ProdutoController@alterar');
 Route::post('oficina/produtos/alterar/alterado', 'ProdutoController@alterado');
 Route::get('home', 'HomeController@index');
+Route::get('oficina/login', 'LoginController@form');
+// Route::get('oficina/login', 'LoginController@form');
+//Auth::routes();
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+//Route::get('oficina/home', 'HomeController@index');

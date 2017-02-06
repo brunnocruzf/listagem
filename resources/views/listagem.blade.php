@@ -14,7 +14,6 @@
             <td>{{$p->valor}}</td>
             <td>{{$p->descricao}}</td>
             <td>{{$p->quantidade}}</td>
-			<td>{{$p->listagem}}</td>
             <td>
                 <a href="produtos/mostra/{{$p->id}}">
                     <bottom class="btn btn-primary">visualizar</bottom>
