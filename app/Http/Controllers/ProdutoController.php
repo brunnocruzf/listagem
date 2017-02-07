@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Request;
 use App\Http\Requests\ProdutoRequest;
 use Session;
+use App\Categorias;
 
 class ProdutoController extends Controller{
     public function lista(){
@@ -19,7 +20,7 @@ class ProdutoController extends Controller{
         return view("detalhes")->with('p', $produto);
     }
     public function novo(){
-        return view('formulario');
+        return view('formulario')->with('categorias', Categorias::all());
     }
 	public function adicionar(ProdutoRequest $request){
 		Produtos::create($request->all());
