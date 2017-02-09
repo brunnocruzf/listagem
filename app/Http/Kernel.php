@@ -18,7 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-		Middleware\AutorizacaoMiddleware::class
+	//	Middleware\AutorizacaoMiddleware::class
     ];
 
     /**
@@ -55,7 +55,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\AutorizacaoMiddleware::class,
+        //'guest' => \App\Http\Middleware\AutorizacaoMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		'auth' => 'App
 		\Http\Middleware\Authenticate',

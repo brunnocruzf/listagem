@@ -20,7 +20,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/oficina/produtos">Listagem</a></li>
-				</ul>
+				</ul
 			</div>
 			
 		</nav>

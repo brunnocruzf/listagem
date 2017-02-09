@@ -39,6 +39,17 @@
 					<input type="text" value="{{$p->quantidade}}" class="form-control" id="quantidade" name="quantidade">
 				</div>
 			</div>
+			<div class="form-group row">
+					<label for="categorias_id" class="col-xs-3 col-form-label">Categoria</label>
+					<div class="col-xs-9">
+						<select name="categorias_id" class="form-control">
+							<option  value="">Selecione uma categoria</option>
+							@foreach($categorias as $c)
+								<option value="{{$c->id}}">{{$c->nome}}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
 			<button type="submit" class="btn btn-primary" style="float:right">Alterar</button>
 	</form>
 	</div>

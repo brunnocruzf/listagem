@@ -1,16 +1,21 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Categorias;
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+         $this->call('CategoriasTableSeeder');
+    }
+}
+class CategoriasTableSeeder extends Seeder {
+    public function run()
+    {
+        Categorias::create(['nome' => 'ELETRODOMESTICO']);
+        Categorias::create(['nome' => 'ELETRONICA']);
+        Categorias::create(['nome' => 'BRINQUEDO']);
+        Categorias::create(['nome' => 'ESPORTES']);
     }
 }

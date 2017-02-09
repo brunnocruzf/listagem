@@ -35,7 +35,7 @@ class ProdutoController extends Controller{
 	public function alterar(){
 		$id = Request::route("id");
 		$produto = Produtos::find($id);
-		return view("alterar")->with('p', $produto);
+		return view("alterar")->with('p', $produto)->with('categorias', Categorias::all());
 	}
 	public function alterado(ProdutoRequest $request){
 		$id = Request::input("id");

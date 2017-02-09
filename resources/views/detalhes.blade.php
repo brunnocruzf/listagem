@@ -10,6 +10,9 @@
 		Descrição: {{$p->descricao}}
 	</li>
 	<li>
+		Categoria: {{$p->Categorias->nome}}
+	</li>
+	<li>
 		Quantidade em estoque: {{$p->quantidade}}
 	</li>
 </ul>

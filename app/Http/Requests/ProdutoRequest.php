@@ -16,7 +16,8 @@ class ProdutoRequest extends FormRequest
             'nome'=>'required|min:3|max:100',
             'valor'=>'required|numeric',
             'descricao'=>'required',
-            'quantidade'=>'required|numeric'
+            'quantidade'=>'required|numeric',
+			'categorias_id'=>'required'
         ];
     }
 }
